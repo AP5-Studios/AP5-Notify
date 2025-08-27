@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: transparent;
+    color: #f0f0f0;
+    overflow: hidden;
+    height: 100vh;
+    user-select: none;
+}
+
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 100%;
+    max-width: 380px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notification {
+    position: relative;
+    padding: 16px 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    
+    opacity: 0;
+    transform: translateX(100%);
+
+    animation: slideIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transition: transform 0.2s ease;
+    
+    will-change: transform, opacity;
+}
+
+.notification::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    background: rgba(25, 25, 30, 0.7);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    
+    z-index: -1;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+
+.notification.closing {
+    animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.8, 0.2) forwards;
+}
+
+.icon-container, .content, .timestamp, .progress-bar-container {
+    z-index: 1;
+}
+
+.icon-container {
+    font-size: 1.4em;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+}
+
+.content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.timestamp {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    border-radius: 3px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
