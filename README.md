@@ -1,5 +1,5 @@
 # AP5-Notify
-
+https://cdn.discordapp.com/attachments/1020025325687685220/1410521471381536788/Screenshot_2025-08-28_012907.png?ex=68b151fc&is=68b0007c&hm=aecf99977c6557b174626ebb7a45ac8f369d8f96cead0f13a28906850cd748f8&
 ## Features
 - **Modern Sleek Design** - Beautiful, translucent notifications with blur effects
 - **Multiple Notification Types** - Success, Error, Info, Warning, Police, and custom types
